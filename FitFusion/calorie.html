@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calorie Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(3, 3, 3);
+            color: #fff;
+          }
+      
+          /* Navbar */
+          .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #010101;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+        }
+      
+          .navbar .logo a {
+            font-size: 24px; /* Adjust logo text size */
+            font-weight: bold;
+            color: #fff; /* White text for the logo */
+            text-decoration: none; /* Remove underline */
+          }
+      
+          .navbar ul {
+            list-style-type: none; /* Remove bullets */
+            display: flex;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-right: 20px;
+            padding-left: 20px;
+          }
+      
+          .navbar ul li {
+            margin-left: 20px; /* Spacing between the menu items */
+            position: relative; /* Position relative for dropdown */
+          }
+      
+          .navbar ul li a {
+            color: #fff; /* White text for menu items */
+            text-decoration: none; /* Remove underline */
+            font-size: 18px;
+            padding: 10px; /* Add padding for better click area */
+          }
+      
+          .navbar ul li a:hover {
+            color: #ccc; /* Lighter color on hover */
+          }
+      
+          /* Dropdown Styles */
+          .dropdown {
+            display: none; /* Initially hidden */
+            position: absolute; /* Position relative to parent li */
+            top: 100%; /* Position it below the parent */
+            left: 0;
+            background-color: #010101; /* Dropdown background */
+            padding: 0; /* No padding for dropdown */
+            border-radius: 5px;
+            z-index: 1000; /* Ensure it appears above other elements */
+            min-width: 150px; /* Set a minimum width for the dropdown */
+          }
+      
+          .navbar ul li:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+          }
+      
+          .dropdown a {
+            padding: 10px 20px; /* Padding for dropdown links */
+            display: block; /* Display as block elements */
+            color: #fff; /* White text */
+            text-decoration: none; /* Remove underline */
+          }
+      
+          .dropdown a:hover {
+            background-color: #7f0202; /* Change background on hover */
+            color: #010101; /* Darker text on hover */
+          }
+
+        .container {
+            background: #7f0202(255, 255, 255, 0.8); /* Semi-transparent */
+            border: 2px solid #444; /* Border */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, opacity 0.5s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            box-shadow: 0 12px 24px rgba(149, 3, 3, 0.538);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+            opacity: 0;
+            animation: slideUp 0.5s forwards;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #b91a1a;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #dd1111;
+            transform: scale(1.1);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: fadeIn 1s forwards; /* For smoother appearance */
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        span {
+            color: rgb(138, 3, 3);
+          }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+          <a href="/dashboard"><span>Fit</span>Fusion</a>
+        </div>
+        <ul>
+          <li><a href="/dashboard">Home</a></li>
+          <li>
+            <a href="#calculator">Calculator</a>
+            <div class="dropdown">
+              <a href="/calorie">Calorie Calculator</a>
+              <a href="/bmr">BMI Calculator</a>
+            </div>
+          </li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    
+    <div class="container">
+        <h1>Calorie Calculator</h1>
+        <form id="calorieForm">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" min="0" value="18">
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" min="0" value="170">
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" min="0" value="70">
+            </div>
+            <div class="form-group">
+                <label for="activity">Activity Level:</label>
+                <select id="activity">
+                    <option value="1.2">Little to no exercise</option>
+                    <option value="1.375">Light exercise</option>
+                    <option value="1.55">Moderate exercise</option>
+                    <option value="1.725">Heavy exercise</option>
+                    <option value="1.9">Very heavy exercise</option>
+                </select>
+            </div>
+            <button type="button" onclick="calculateCalories()">Calculate</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Function to calculate calories
+        function calculateCalories() {
+            const gender = document.getElementById('gender').value;
+            const age = parseFloat(document.getElementById('age').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+
+            let bmr;
+
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+
+            const totalCalories = bmr * activity;
+
+            // Display the result message dynamically
+            const resultElement = document.getElementById('result');
+            resultElement.innerText = `Daily Calorie Needs: ${totalCalories.toFixed(2)} calories`;
+            resultElement.style.opacity = 0;
+
+            // Animate the result display
+            setTimeout(() => {
+                resultElement.style.opacity = 1;
+            }, 10);
+        }
+
+        // Add hover effects for inputs
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('mouseenter', () => {
+                input.style.backgroundColor = '#f1f1f1'; // Change background on hover
+            });
+            input.addEventListener('mouseleave', () => {
+                input.style.backgroundColor = 'white'; // Revert to original
+            });
+        });
+
+        // Add hover effects for the form container
+        const container = document.querySelector('.container');
+        container.addEventListener('mouseenter', () => {
+            container.style.borderColor = '#28a745';
+        });
+        container.addEventListener('mouseleave', () => {
+            container.style.borderColor = '#444';
+        });
+    </script>
+</body>
+</html>

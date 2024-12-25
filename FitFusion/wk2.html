@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realistic Home Workout</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        header {
+            background-color: #282c34;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .body-container {
+            margin: 50px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .body-image {
+            width: 80%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .body-image:hover {
+            transform: scale(1.05);
+        }
+
+        .muscle-info {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            text-align: left;
+            width: 200px;
+        }
+
+        .muscle-info h4 {
+            margin-top: 0;
+            color: rgb(138, 3, 3);
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #282c34;
+            color: white;
+            text-align: center;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .body-image {
+                width: 100%;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #010101;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+         /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #010101;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease-in-out;
+    }
+  
+      .navbar .logo a {
+        font-size: 24px; /* Adjust logo text size */
+        font-weight: bold;
+        color: #fff; /* White text for the logo */
+        text-decoration: none; /* Remove underline */
+      }
+  
+      .navbar ul {
+        list-style-type: none; /* Remove bullets */
+        display: flex;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+  
+      .navbar ul li {
+        margin-left: 20px; /* Spacing between the menu items */
+        position: relative; /* Position relative for dropdown */
+      }
+  
+      .navbar ul li a {
+        color: #fff; /* White text for menu items */
+        text-decoration: none; /* Remove underline */
+        font-size: 18px;
+        padding: 10px; /* Add padding for better click area */
+      }
+  
+      .navbar ul li a:hover {
+        color: #ccc; /* Lighter color on hover */
+      }
+  
+      /* Dropdown Styles */
+      .dropdown {
+        display: none; /* Initially hidden */
+        position: absolute; /* Position relative to parent li */
+        top: 100%; /* Position it below the parent */
+        left: 0;
+        background-color: #010101; /* Dropdown background */
+        padding: 0; /* No padding for dropdown */
+        border-radius: 5px;
+        z-index: 1000; /* Ensure it appears above other elements */
+        min-width: 150px; /* Set a minimum width for the dropdown */
+      }
+  
+      .navbar ul li:hover .dropdown {
+        display: block; /* Show dropdown on hover */
+      }
+  
+      .dropdown a {
+        padding: 10px 20px; /* Padding for dropdown links */
+        display: block; /* Display as block elements */
+        color: #fff; /* White text */
+        text-decoration: none; /* Remove underline */
+      }
+  
+      .dropdown a:hover {
+        background-color: #7f0202; /* Change background on hover */
+        color: #010101; /* Darker text on hover */
+      }
+
+
+        span {
+            color: rgb(138, 3, 3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/dashboard"><span>Fit</span>Fusion</a>
+        </div>
+        <ul>
+          <li><a href="/dashboard">Home</a></li>
+          <li>
+            <a href="#calculator">Calculator</a>
+            <div class="dropdown">
+              <a href="/calorie">Calorie Calculator</a>
+              <a href="/bmr">BMI Calculator</a>
+            </div>
+          </li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+    <div class="container" style="margin-top: 80px;">
+        <!-- Human body image with clickable muscle groups -->
+        <div class="body-container">
+            <img src="/images/wk.png" alt="Muscle Groups" usemap="#bodymap" class="body-image">
+            <map name="bodymap">
+                <area shape="rect" coords="110,150,230,180" alt="Chest" data-muscle="chest">
+                <area shape="rect" coords="130,350,180,450" alt="Legs" data-muscle="legs">
+                <area shape="rect" coords="120,200,150,230" alt="Arms" data-muscle="arms">
+                <area shape="rect" coords="160,300,200,250" alt="Abs" data-muscle="abs">
+                <area shape="rect" coords="220,350,250,450" alt="Legs" data-muscle="legs">
+            
+            </map>
+
+            <!-- Pop-up info box -->
+            <div class="muscle-info" id="muscleInfo">
+                <h4 id="muscleTitle"></h4>
+                <p id="muscleDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Home Workout | Stay Fit | Follow Along on YouTube</p>
+    </footer>
+
+    <script>
+        const muscleInfo = document.getElementById('muscleInfo');
+        const muscleTitle = document.getElementById('muscleTitle');
+        const muscleDescription = document.getElementById('muscleDescription');
+
+        const muscleData = {
+            chest: {
+                title: "Chest Muscles",
+                description: "Your chest muscles, primarily the pectorals, are crucial for pushing motions. Target them with exercises like push-ups and bench presses."
+            },
+            legs: {
+                title: "Leg Muscles",
+                description: "Your legs contain some of the largest muscles in your body, including the quadriceps, hamstrings, and calves. Squats and lunges are great for leg strength."
+            },
+            arms: {
+                title: "Arm Muscles",
+                description: "Your arms include the biceps, triceps, and forearm muscles. Exercises like curls and tricep dips can improve your arm strength."
+            },
+            abs: {
+                title: "Abdominal Muscles",
+                description: "The abs or core muscles are key for stability and posture. Exercises like crunches, planks, and leg raises help in building a strong core."
+            }
+        };
+
+        const areas = document.querySelectorAll('area');
+        areas.forEach(area => {
+            area.addEventListener('mouseenter', function(event) {
+                const muscle = event.target.dataset.muscle;
+                if (muscle && muscleData[muscle]) {
+                    showMuscleInfo(event, muscle);
+                }
+            });
+
+            area.addEventListener('mouseleave', hideMuscleInfo);
+
+            area.addEventListener('click', function() {
+                const muscle = event.target.dataset.muscle;
+                if (muscle) {
+                    window.location.href = `exercises.html?muscle=${muscle}`;
+                }
+            });
+        });
+
+        function showMuscleInfo(event, muscle) {
+            muscleTitle.textContent = muscleData[muscle].title;
+            muscleDescription.textContent = muscleData[muscle].description;
+            muscleInfo.style.display = 'block';
+
+            const x = event.pageX + 10;
+            const y = event.pageY - 50;
+            muscleInfo.style.left = `${x}px`;
+            muscleInfo.style.top = `${y}px`;
+        }
+
+        function hideMuscleInfo() {
+            muscleInfo.style.display = 'none';
+        }
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
