@@ -1,0 +1,73 @@
+<!-- views/login-failed.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #2d2a2a;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: white;
+        }
+        p {
+            color: white;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .retry-btn {
+            background-color: #b80000;
+            color: white;
+        }
+        .retry-btn:hover {
+            background-color: #a00000;
+        }
+        .register-btn {
+            background-color: #0048ffa2;
+            color: white;
+        }
+        .register-btn:hover {
+            background-color: #003cd3a2;
+        }
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login <span>Failed!</span></h1>
+        <p><span>Oops!</span> Something went wrong. Would you like to register or try again?</p>
+        <div class="buttons">
+            <a href="/"><button class="retry-btn">Try Again</button></a>
+            <a href="/register"><button class="register-btn">Register</button></a>
+        </div>
+    </div>
+</body>
+</html>
